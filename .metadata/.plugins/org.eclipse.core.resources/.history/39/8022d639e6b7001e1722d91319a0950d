@@ -1,0 +1,26 @@
+package net.javaguides.sms.controller;
+
+import org.springframework.stereotype.Controller;
+
+import ch.qos.logback.core.model.Model;
+import net.javaguides.sms.service.StudentService;
+
+@Controller
+public class StudentController {
+	
+private StudentService studentService;
+
+public StudentController(StudentService studentService) {
+	super();
+	this.studentService = studentService;
+}
+//handler method to handle list students and return mode and view
+
+@GetMapping("/studenst")
+public String listStudents(Model model) {
+	model.addAttribute("students",studentService.getAllStudents());
+	return "student";
+	
+	
+}
+}
